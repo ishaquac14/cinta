@@ -1,0 +1,9 @@
+/* Warna latar belakang saat radio button diperiksa */
+input[type="radio"]:checked + label::before {
+    background-color: green; /* Ganti dengan warna hijau yang Anda inginkan */
+}
+
+/* Warna latar belakang saat radio button tidak diperiksa */
+input[type="radio"] + label::before {
+    background-color: orange; /* Ganti dengan warna oranye yang Anda inginkan */
+}
