@@ -30,13 +30,13 @@
                 <td>Host 3</td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="host" id="host3ok" value="H">
+                        <input class="form-check-input" type="radio" name="host" id="host3ok" value="OK">
                         <label class="form-check-label" for="host3ok"></label>
                     </div>
                 </td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="host" id="host3ng" value="HNG">
+                        <input class="form-check-input" type="radio" name="host" id="host3ng" value="NG">
                         <label class="form-check-label" for="host3ng"></label>
                     </div>
                 </td>
@@ -46,13 +46,13 @@
                 <td>Storage 3</td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="storage" id="storage3ok" value="S">
+                        <input class="form-check-input" type="radio" name="storage" id="storage3ok" value="OK">
                         <label class="form-check-label" for="storage3ok"></label>
                     </div>
                 </td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="storage" id="storage3ng" value="SNG">
+                        <input class="form-check-input" type="radio" name="storage" id="storage3ng" value="NG">
                         <label class="form-check-label" for="storage3ng"></label>
                     </div>
                 </td>
@@ -62,13 +62,13 @@
                 <td>HDD1-Str3</td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd1" id="hdd1ok" value="HDD1">
+                        <input class="form-check-input" type="radio" name="hdd1" id="hdd1ok" value="OK">
                         <label class="form-check-label" for="hdd1ok"></label>
                     </div>
                 </td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd1" id="hdd1ng" value="HDD1NG">
+                        <input class="form-check-input" type="radio" name="hdd1" id="hdd1ng" value="NG">
                         <label class="form-check-label" for="hdd1ng"></label>
                     </div>
                 </td>
@@ -78,13 +78,13 @@
                 <td>HDD2-Str3</td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd2" id="hdd2ok" value="HDD2OK">
+                        <input class="form-check-input" type="radio" name="hdd2" id="hdd2ok" value="OK">
                         <label class="form-check-label" for="hdd2ok"></label>
                     </div>
                 </td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd2" id="hdd2ng" value="HDD2ng">
+                        <input class="form-check-input" type="radio" name="hdd2" id="hdd2ng" value="NG">
                         <label class="form-check-label" for="hdd2ng"></label>
                     </div>
                 </td>

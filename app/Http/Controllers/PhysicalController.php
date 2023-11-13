@@ -43,10 +43,10 @@ class PhysicalController extends Controller
      public function store(Request $request)
     {
         $request->validate([
-            'host' => 'required|in:H,HNG',
-            'storage' => 'required|in:S,SNG',
-            'hdd1' => 'required|in:HDD1,HDD1NG',
-            'hdd2' => 'required|in:HDD2OK,HDD2ng',
+            'host' => 'required|in:OK,NG',
+            'storage' => 'required|in:OK,NG',
+            'hdd1' => 'required|in:OK,NG',
+            'hdd2' => 'required|in:OK,NG',
             'note' => 'nullable|string',
         ]);
 
@@ -72,7 +72,7 @@ class PhysicalController extends Controller
     public function show($id)
     {
         $physical = Physical::findOrFail($id);
-        return view('pages.physical.show', compact('physical'));
+        return view('pages.physical.index', compact('physical'));
     }
 }
 
