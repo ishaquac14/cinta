@@ -18,7 +18,7 @@
         <table class="table table-striped table-bordered">
             <thead class="table-primary">
               <tr>
-                <th scope="col">No</th>
+                <th scope="col" style="width: 4% ;" class="text-center">No</th>
                 <th scope="col">Task List</th>
                 <th scope="col">OK (Green)</th>
                 <th scope="col">Not Good (Orange)</th>
@@ -26,69 +26,106 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <th scope="row" class="text-center">1</th>
                 <td>Host 3</td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="host" id="host3ok" value="OK">
+                        <input class="form-check-input" type="radio" name="host3" id="host3ok" value="OK" required>
                         <label class="form-check-label" for="host3ok"></label>
                     </div>
                 </td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="host" id="host3ng" value="NG">
+                        <input class="form-check-input" type="radio" name="host3" id="host3ng" value="NG" required>
                         <label class="form-check-label" for="host3ng"></label>
                     </div>
                 </td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <th scope="row" class="text-center">2</th>
                 <td>Storage 3</td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="storage" id="storage3ok" value="OK">
+                        <input class="form-check-input" type="radio" name="storage3" id="storage3ok" value="OK" required>
                         <label class="form-check-label" for="storage3ok"></label>
                     </div>
                 </td>
                 <td>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="storage" id="storage3ng" value="NG">
+                        <input class="form-check-input" type="radio" name="storage3" id="storage3ng" value="NG" required>
                         <label class="form-check-label" for="storage3ng"></label>
                     </div>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>HDD1-Str3</td>
-                <td>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd1" id="hdd1ok" value="OK">
-                        <label class="form-check-label" for="hdd1ok"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd1" id="hdd1ng" value="NG">
-                        <label class="form-check-label" for="hdd1ng"></label>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>HDD2-Str3</td>
-                <td>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd2" id="hdd2ok" value="OK">
-                        <label class="form-check-label" for="hdd2ok"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="hdd2" id="hdd2ng" value="NG">
-                        <label class="form-check-label" for="hdd2ng"></label>
-                    </div>
-                </td>
-              </tr>
+                <?php for ($i = 1; $i <= 19; $i++): ?>
+                    <tr>
+                        <th scope="row" class="text-center"><?php echo $i + 2; ?></th>
+                        <td>HDD<?php echo $i; ?>-Str3</td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hdd<?php echo $i; ?>" id="hdd<?php echo $i; ?>ok" value="OK" required>
+                                <label class="form-check-label" for="hdd<?php echo $i; ?>ok"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="hdd<?php echo $i; ?>" id="hdd<?php echo $i; ?>ng" value="NG" required>
+                                <label class="form-check-label" for="hdd<?php echo $i; ?>ng"></label>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endfor; ?>
+                {{-- Ini Host & Storage 4 --}}
+                <tr>
+                    <th scope="row" class="text-center">22</th>
+                    <td>Host 4</td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="host4" id="host4ok" value="OK" required>
+                            <label class="form-check-label" for="host4ok"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="host4" id="host4ng" value="NG" required>
+                            <label class="form-check-label" for="host4ng"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-center">23</th>
+                    <td>Storage 4</td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="storage4" id="storage4ok" value="OK" required>
+                            <label class="form-check-label" for="storage4ok"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="storage4" id="storage4ng" value="NG" required>
+                            <label class="form-check-label" for="storage4ng"></label>
+                        </div>
+                    </td>
+                </tr>
+                <?php for ($i = 1; $i <= 10; $i++): ?>
+                <tr>
+                    <th scope="row" class="text-center"><?php echo $i + 23; ?></th>
+                    <td>HDD<?php echo $i; ?>-Str4</td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hdd_<?php echo $i + 19; ?>" id="hdd_<?php echo $i + 19; ?>ok" value="OK" required>
+                            <label class="form-check-label" for="hdd_<?php echo $i + 19; ?>ok"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hdd_<?php echo $i + 19; ?>" id="hdd_<?php echo $i + 19; ?>ng" value="NG" required>
+                            <label class="form-check-label" for="hdd_<?php echo $i + 19; ?>ng"></label>
+                        </div>
+                    </td>
+                </tr>
+            <?php endfor; ?>
             </tbody>
           </table>
         <div class="">
@@ -97,7 +134,7 @@
         </div>
         <div class="mt-4"><p><b>IMPORTANT:</b> If any orange, please email to: callcenter.fid@fujitsu.com</p></div>
         <div class="col">
-            <div class="mt-3">
+            <div class="mt-3 mb-5">
                 <button class="btn btn-primary">SUBMIT</button>
             </div>
         </div>
