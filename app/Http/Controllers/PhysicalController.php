@@ -13,20 +13,21 @@ class PhysicalController extends Controller
     public function index(Request $request)
     {
         $searchTerm = $request->input('search');
-
+    
         $physicals = Physical::orderBy('created_at', 'DESC')
             ->where(function ($query) use ($searchTerm) {
                 if ($searchTerm) {
-                    $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('asal_perusahaan', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('departemen', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('tujuan_lokasi', 'LIKE', '%' . $searchTerm . '%');
+                    $query->where('host3', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('storage3', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('host4', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('storage4', 'LIKE', '%' . $searchTerm . '%');
                 }
             })
             ->paginate(5);
-
+    
         return view('pages.physical.index', compact('physicals'));
-    }    
+    }
+  
 
     /**
      * Show the form for creating a new resource.
@@ -68,7 +69,7 @@ class PhysicalController extends Controller
             'storage3' => $request->input('storage3'),
             'host4' => $request->input('host4'),
             'storage4' => $request->input('storage4'),
-            'note' => $request->input('note'),
+            'note' => $request->input('note')
         ];
         
         // Tambahkan 'hdd1' hingga 'hdd19' ke dalam data untuk storage3
@@ -78,14 +79,14 @@ class PhysicalController extends Controller
         
         // Tambahkan 'hdd1' hingga 'hdd10' ke dalam data untuk storage4
         for ($i = 1; $i <= 10; $i++) {
-            $data["hdd_" . ($i + 19)] = $request->input("hdd_" . ($i + 19));
+            $data["hdd_" . ($i)] = $request->input("hdd_" . ($i + 19));
         }
-        
+        // dd($data);
         Physical::create($data);
         
 
         // Redirect atau memberikan respons sesuai kebutuhan
-        return redirect()->route('welcome')->with('success', 'Data berhasil disimpan');
+        return redirect()->route('physical.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -94,6 +95,6 @@ class PhysicalController extends Controller
     public function show($id)
     {
         $physical = Physical::findOrFail($id);
-        return view('pages.physical.index', compact('physical'));
+        return view('pages.physical.show', compact('physical'));
     }
 }

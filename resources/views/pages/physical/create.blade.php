@@ -6,7 +6,7 @@
     <div class="d-flex align-items-center justify-content-between mt-5 mb-5">
         <a href="{{ route('welcome') }}">
             <img src="{{ asset('images/logo1.png') }}" alt="" height="25">
-            <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
+            <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
         </a>
     </div>
     <div>
