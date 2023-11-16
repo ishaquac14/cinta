@@ -13,24 +13,25 @@ class SanswitchController extends Controller
     public function index(Request $request)
     {
         $searchTerm = $request->input('search');
-
+    
         $sanswitchs = Sanswitch::orderBy('created_at', 'DESC')
             ->where(function ($query) use ($searchTerm) {
                 if ($searchTerm) {
-                    $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('asal_perusahaan', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('departemen', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('tujuan_lokasi', 'LIKE', '%' . $searchTerm . '%');
+                    $query->where('powerstatus', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('notif', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('powerstatus_', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('notif_', 'LIKE', '%' . $searchTerm . '%');
                 }
             })
             ->paginate(5);
-
+    
         return view('pages.sanswitch.index', compact('sanswitchs'));
-    }    
+    }
+  
+
     /**
      * Show the form for creating a new resource.
      */
-
     public function create()
     {
         return view('pages.sanswitch.create');
@@ -39,38 +40,60 @@ class SanswitchController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-        public function store(Request $request)
+    public function store(Request $request)
     {
-        // Validasi input dari form
-        $request->validate([
-            'nik' => 'required|string',
-            'nama' => 'required|string',
-            'asal_perusahaan' => 'required|string',
-            'nama_pic' => 'required|string',
-            'departemen' => 'required|string',
-            'tujuan_lokasi' => 'required|string',
-            'tujuan' => 'required|string',
-        ]);
+        // Validasi form input
+        $rules = [
+            'powerstatus' => 'required|in:OK,NG',
+            'notif_' => 'required|in:OK,NG',
+            'powerstatus_' => 'required|in:OK,NG',
+            'notif' => 'required|in:OK,NG',
+            'note' => 'nullable|string',
+        ];
 
-        // Simpan data buku ke dalam database
-        Sanswitch::create([
-            'nik' => $request->nik,
-            'nama' => $request->nama,
-            'asal_perusahaan' => $request->asal_perusahaan,
-            'nama_pic' => $request->nama_pic,
-            'departemen' => $request->departemen,
-            'tujuan_lokasi' => $request->tujuan_lokasi,
-            'tujuan' => $request->tujuan,
-        ]);    
+        for ($i = 0; $i <= 3; $i++) {
+            $rules["port{$i}"] = 'required|in:OK,NG';
+        }
+
+        for ($i = 0; $i <= 4; $i++) {
+            $rules["port_{$i}"] = 'required|in:OK,NG';
+        }
+
+        $request->validate($rules);
+
+        // Simpan data ke database
+        $data = [
+            'powerstatus' => $request->input('powerstatus'),
+            'notif' => $request->input('notif'),
+            'powerstatus_' => $request->input('powerstatus_'),
+            'notif_' => $request->input('notif_'),
+            'note' => $request->input('note')
+        ];
         
-        return redirect()->route('pages.sanswitch.index')->with('success', 'Data Sukses Ditambahkan');
+        // Tambahkan 'hdd1' hingga 'hdd19' ke dalam data untuk storage3
+        for ($i = 0; $i <= 3; $i++) {
+            $data["port{$i}"] = $request->input("port{$i}");
+        }
+        
+        // Tambahkan 'hdd1' hingga 'hdd10' ke dalam data untuk storage4
+        for ($i = 0; $i <= 4; $i++) {
+            $data["port_{$i}"] = $request->input("port_{$i}");
+        }
+        
+        Sanswitch::create($data);
+
+        // Redirect atau memberikan respons sesuai kebutuhan
+        return redirect()->route('sanswitch.index')->with('success', 'Data berhasil disimpan');
+
     }
+
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        $physical = Sanswitch::findOrFail($id);
+        $sanswitch = Sanswitch::findOrFail($id);
         return view('pages.sanswitch.show', compact('sanswitch'));
     }
+        
 }

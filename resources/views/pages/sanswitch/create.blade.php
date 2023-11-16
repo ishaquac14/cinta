@@ -16,71 +16,124 @@
     <form action="{{ route('sanswitch.store') }}" method="POST">
         @csrf
         <table class="table table-striped table-bordered">
-            <thead class="table-primary">
+            <thead class="table-primary text-center">
               <tr>
-                <th scope="col">No</th>
+                <th width="4%" scope="col">No</th>
                 <th scope="col">Device</th>
                 <th scope="col">Task List</th>
-                <th scope="col">OK (Green)</th>
-                <th scope="col">Not Good (Orange)</th>
+                <th width="25%" scope="col">OK (Green)</th>
+                <th width="25%" scope="col">Not Good (Orange)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td rowspan="4" style="vertical-align: middle; text-align: center;">DELL SAN-SW-01</td>
+                <th scope="row" class="text-center">1</th>
+                <td rowspan="6" style="vertical-align: middle; text-align: center;">DELL SAN-SW-01</td>
                 <td>Power Status</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="powerstatus" id="powerstatusok" value="OK" required>
+                        <label class="form-check-label" for="powerstatusok">OK</label>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="powerstatus" id="powerstatusng" value="NG" required>
+                        <label class="form-check-label" for="powerstatusng">NG</label>
+                    </div>
+                </td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <th scope="row" class="text-center">2</th>
                 <td>Notification Status</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="notif" id="notifok" value="OK" required>
+                        <label class="form-check-label" for="notifok">OK</label>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="notif" id="notifng" value="NG" required>
+                        <label class="form-check-label" for="notifng">NG</label>
+                    </div>
+                </td>
               </tr>
+                <?php for ($i = 0; $i <= 3; $i++): ?>
+                    <tr>
+                        <th scope="row" class="text-center"><?php echo $i + 3; ?></th>
+                        <td>Port-<?php echo $i; ?></td>
+                        <td class="text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="port<?php echo $i; ?>" id="port<?php echo $i; ?>ok" value="OK" required>
+                                <label class="form-check-label" for="port<?php echo $i; ?>ok">OK</label>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="port<?php echo $i; ?>" id="port<?php echo $i; ?>ng" value="NG" required>
+                                <label class="form-check-label" for="port<?php echo $i; ?>ng">NG</label>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endfor; ?> 
               <tr>
-                <th scope="row">3</th>
-                <td>Port-0</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Port-1</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td rowspan="4" style="vertical-align: middle; text-align: center;">DELL SAN-SW-02</td>
+                <th scope="row" class="text-center">7</th>
+                <td rowspan="7" style="vertical-align: middle; text-align: center;">DELL SAN-SW-02</td>
                 <td>Power Status</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
-              </tr>            
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="powerstatus_" id="powerstatusok_" value="OK" required>
+                        <label class="form-check-label" for="powerstatusok_">OK</label>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="powerstatus_" id="powerstatusng_" value="NG" required>
+                        <label class="form-check-label" for="powerstatusng_">NG</label>
+                    </div>
+                </td>
+              </tr>
               <tr>
-                <th scope="row">6</th>
+                <th scope="row" class="text-center">8</th>
                 <td>Notification Status</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="notif_" id="notifok_" value="OK" required>
+                        <label class="form-check-label" for="notifok_">OK</label>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="notif_" id="notifng_" value="NG" required>
+                        <label class="form-check-label" for="notifng_">NG</label>
+                    </div>
+                </td>
               </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>Port-0</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>Port-1</td>
-                <td><input type="radio"></td>
-                <td><input type="radio"></td>
-              </tr>
+              {{-- pengulangan --}}
+                <?php for ($i = 0; $i <= 4; $i++): ?>
+                <tr>
+                    <th scope="row" class="text-center"><?php echo $i + 9; ?></th>
+                    <td>Port-<?php echo $i; ?></td>
+                    <td class="text-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="port_<?php echo $i ?>" id="port_<?php echo $i ?>ok" value="OK" required>
+                            <label class="form-check-label" for="port_<?php echo $i ?>ok">OK</label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="port_<?php echo $i ?>" id="port_<?php echo $i ?>ng" value="NG" required>
+                            <label class="form-check-label" for="port_<?php echo $i ?>ng">NG</label>
+                        </div>
+                    </td>
+                </tr>
+            <?php endfor; ?>
             </tbody>
           </table>
         <div class="">
             <label for="exampleFormControlTextarea1" class="form-label"></label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Note"></textarea>
+            <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="4" placeholder="Note"></textarea>
         </div>
         <div class="mt-4"><p><b>IMPORTANT:</b> If any orange, please email to: callcenter.fid@fujitsu.com</p></div>
         <div class="mt-3 mb-5">

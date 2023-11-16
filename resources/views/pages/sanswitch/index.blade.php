@@ -5,11 +5,15 @@
         <div class="d-flex align-items-center justify-content-between mt-5">
             <a href="{{ route('welcome') }}">
                 <img src="{{ asset('images/logo1.png') }}" alt="" height="25">
-                <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
-            </a>              
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('sanswitch.create') }}" class="btn btn-primary" style="margin-left: 10px;">Create Checksheet</a>
+            </div>
         </div>
-        <div class="col-md-3 offset-md-9 mb-4">
-            <form action="/physical" class="d-flex ml-auto mt-2" method="GET">
+        <div class="col-md-3 offset-md-9 mb-3">
+            <form action="/sanswitch" class="d-flex ml-auto mt-2" method="GET">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
@@ -20,32 +24,30 @@
     </div>
     @endif
     <div class="table-responsive">
-        <table id="example" class="table table-striped" style="width:100%">
-            <thead class="table-primary">
+        <table id="example" class="table table-striped table-bordered">
+            <thead class="table-primary text-center">
                 <tr>
-                    <th>NO</th>
-                    <th>NAMA</th>
-                    <th>ASAL PERUSAHAAN</th>
-                    <th>DEPARTEMEN</th>
-                    <th>TUJUAN LOKASI</th>
-                    <th>ACTION</th>
+                    <th width="4%">No</th>
+                    <th width="20%">Tanggal</th>
+                    <th>Author</th>
+                    <th>Note</th>
+                    <th width="20%">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if($physicals->count() > 0)
-                @foreach ($physicals as $physical)
-                <tr class="table-light"> 
-                    <td class="align-middle">{{ $loop->iteration }}</td>
-                    <td class="align-middle">{{ $physical->nama }}</td>
-                    <td class="align-middle">{{ $physical->asal_perusahaan }}</td>
-                    <td class="align-middle">{{ $physical->departemen }}</td>
-                    <td class="align-middle">{{ $physical->tujuan_lokasi }}</td>
-                    <td class="align-middle">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{ route('physical.show', $physical->id) }}" class="btn btn-primary">Detail</a>
-                        </div>
-                    </td>
-                </tr>
+                @if($sanswitchs->count() > 0)
+                @foreach ($sanswitchs as $sanswitch)
+                    <tr class="table-light"> 
+                        <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                        <td class="align-middle text-center">{{ \Carbon\Carbon::parse($sanswitch->created_at)->format('d-m-Y') }}</td>
+                        <td class="align-middle">{{ $sanswitch->author }}</td>
+                        <td class="align-middle">{{ $sanswitch->note }}</td>
+                        <td class="align-middle text-center">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a href="{{ route('sanswitch.show', $sanswitch->id) }}" class="btn btn-primary">Detail</a>
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
                 @else
                 <tr>
@@ -54,7 +56,7 @@
                 @endif
             </tbody>
         </table>
-        {{-- @include('layouts.pagination-physical', ['physicals' => $physicals]) --}}
+        {{-- @include('layouts.pagination-sanswitch', ['sanswitchs' => $sanswitchs]) --}}
     </div>
 </div>
 @endsection
