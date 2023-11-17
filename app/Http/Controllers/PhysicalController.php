@@ -19,12 +19,12 @@ class PhysicalController extends Controller
         if ($searchTerm) {
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('created_at', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%');
+                    ->orWhere('note', 'LIKE', '%' . $searchTerm . '%');
             });
         }
     
         // Menggunakan paginate(10) untuk mendapatkan data paginasi
-        $physicals = $query->paginate(2);
+        $physicals = $query->paginate(5);
     
         // Mengirimkan data ke tampilan
         return view('pages.physical.index', compact('physicals'));
