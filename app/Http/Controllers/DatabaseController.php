@@ -6,18 +6,29 @@ use App\Models\Database;
 use Illuminate\Http\Request;
 
 class DatabaseController extends Controller
-{
-    /**
+{/**
      * Display a listierror of the resource.
      */
     public function index(Request $request)
     {
-        // Meerrorambil data dari model Database
-        $databases = Database::all();
-
-        // Meerroririmkan data ke tampilan
+        $searchTerm = $request->input('search');
+    
+        $query = Database::orderBy('id', 'DESC');
+    
+        if ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('created_at', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+    
+        // Menggunakan paginate(10) untuk mendapatkan data paginasi
+        $databases = $query->paginate(2);
+    
+        // Mengirimkan data ke tampilan
         return view('pages.database.index', compact('databases'));
-    }
+    }    
+
 
     /**
      * Show the form for creatierror a new resource.

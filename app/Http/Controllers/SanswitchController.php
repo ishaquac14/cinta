@@ -14,16 +14,19 @@ class SanswitchController extends Controller
     {
         $searchTerm = $request->input('search');
     
-        $sanswitchs = Sanswitch::orderBy('created_at', 'DESC')
-            ->where(function ($query) use ($searchTerm) {
-                if ($searchTerm) {
-                    $query->where('powerstatus', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('notif', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('powerstatus_', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('notif_', 'LIKE', '%' . $searchTerm . '%');
-                }
-            })
-            ->paginate(5);
+        $query = Sanswitch::orderBy('id', 'DESC');
+    
+        if ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('created_at', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+    
+        // Menggunakan paginate(10) untuk mendapatkan data paginasi
+        $sanswitchs = $query->paginate(2);
+    
+        // Mengirimkan data ke tampilan    
     
         return view('pages.sanswitch.index', compact('sanswitchs'));
     }

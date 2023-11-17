@@ -3,16 +3,16 @@
 @section('body')
 <div class="container">
     <div class="d-flex align-items-center justify-content-between mt-5 mb-5">
-        <a href="{{ route('welcome') }}">
+        <a href="{{ route('database.index') }}">
             <img src="{{ asset('images/logo1.png') }}" alt="" height="25">
-            <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
+            <a href="javascript:history.go(-1);" class="btn btn-dark">Kembali</a>
         </a>
     </div>
     <div class="mb-3">
         <h4>C/S BACKUP DATABASE</h4>
     </div>
     <hr>
-
+    
     <form action="{{ route('database.store') }}" method="POST">
         @csrf
         <table class="table table-striped table-bordered">

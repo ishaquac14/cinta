@@ -8,14 +8,14 @@
             </a>
             
             <div class="d-flex align-items-center">
-                <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
+                <a href="javascript:history.go(-1);" class="btn btn-dark">Kembali</a>
                 <a href="{{ route('sanswitch.create') }}" class="btn btn-primary" style="margin-left: 10px;">Create Checksheet</a>
             </div>
         </div>
         <div class="col-md-3 offset-md-9 mb-3">
             <form action="/sanswitch" class="d-flex ml-auto mt-2" method="GET">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
+                <button class="btn btn-success" type="submit">Search</button>
             </form>
         </div>
     @if(Session::has('success'))
@@ -36,9 +36,12 @@
             </thead>
             <tbody>
                 @if($sanswitchs->count() > 0)
+                @php
+                    $baseNumber = ($sanswitchs->currentPage() - 1) * $sanswitchs->perPage() + 1;
+                @endphp
                 @foreach ($sanswitchs as $sanswitch)
                     <tr class="table-light"> 
-                        <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                        <td class="align-middle text-center">{{ $baseNumber++ }}</td>
                         <td class="align-middle text-center">{{ \Carbon\Carbon::parse($sanswitch->created_at)->format('d-m-Y') }}</td>
                         <td class="align-middle">{{ $sanswitch->author }}</td>
                         <td class="align-middle">{{ $sanswitch->note }}</td>
@@ -56,7 +59,7 @@
                 @endif
             </tbody>
         </table>
-        {{-- @include('layouts.pagination-sanswitch', ['sanswitchs' => $sanswitchs]) --}}
+        @include('layouts.pagination-sanswitch', ['sanswitchs' => $sanswitchs])
     </div>
 </div>
 @endsection

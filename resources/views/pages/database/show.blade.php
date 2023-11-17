@@ -4,9 +4,9 @@
 
 <div class="container">
     <div class="d-flex align-items-center justify-content-between mt-5 mb-5">
-        <a href="{{ route('welcome') }}">
+        <a href="{{ route('database.index') }}">
             <img src="{{ asset('images/logo1.png') }}" alt="" height="25">
-            <a href="{{ route('database.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('database.index') }}" class="btn btn-dark">Kembali</a>
         </a>
     </div>
     <div class="mb-2">

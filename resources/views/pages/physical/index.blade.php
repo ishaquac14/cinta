@@ -3,7 +3,7 @@
 @section('body')
 <div class="container">
         <div class="d-flex align-items-center justify-content-between mt-5">
-            <a href="{{ route('welcome') }}">
+            <a href="{{ route('physical.index') }}">
                 <img src="{{ asset('images/logo1.png') }}" alt="" height="25">
             </a>
             
@@ -36,9 +36,12 @@
             </thead>
             <tbody>
                 @if($physicals->count() > 0)
+                @php
+                    $baseNumber = ($physicals->currentPage() - 1) * $physicals->perPage() + 1;
+                @endphp
                 @foreach ($physicals as $physical)
                     <tr class="table-light"> 
-                        <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                        <td class="align-middle text-center">{{ $baseNumber++ }}</td>
                         <td class="align-middle text-center">{{ \Carbon\Carbon::parse($physical->created_at)->format('d-m-Y') }}</td>
                         <td class="align-middle">{{ $physical->author }}</td>
                         <td class="align-middle">{{ $physical->note }}</td>
@@ -56,7 +59,7 @@
                 @endif
             </tbody>
         </table>
-        {{-- @include('layouts.pagination-physical', ['physicals' => $physicals]) --}}
+        @include('layouts.pagination-physical', ['physicals' => $physicals])
     </div>
 </div>
 @endsection

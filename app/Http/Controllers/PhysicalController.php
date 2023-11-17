@@ -14,19 +14,21 @@ class PhysicalController extends Controller
     {
         $searchTerm = $request->input('search');
     
-        $physicals = Physical::orderBy('created_at', 'DESC')
-            ->where(function ($query) use ($searchTerm) {
-                if ($searchTerm) {
-                    $query->where('host3', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('storage3', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('host4', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('storage4', 'LIKE', '%' . $searchTerm . '%');
-                }
-            })
-            ->paginate(5);
+        $query = Physical::orderBy('id', 'DESC');
     
+        if ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('created_at', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+    
+        // Menggunakan paginate(10) untuk mendapatkan data paginasi
+        $physicals = $query->paginate(2);
+    
+        // Mengirimkan data ke tampilan
         return view('pages.physical.index', compact('physicals'));
-    }
+    }    
   
 
     /**
