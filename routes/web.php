@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhysicalController;
 use App\Http\Controllers\SanswitchController;
+use App\Http\Controllers\DatabaseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +16,19 @@ use App\Http\Controllers\SanswitchController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('layouts.app');
+});
 
 Route::resource('/physical', PhysicalController::class);
 Route::get('/physical/search', 'PhysicalController@index');
+Route::post('/physical/store', [PhysicalController::class, 'store'])->name('physical.store');
 
 Route::resource('/sanswitch', SanswitchController::class);
 Route::get('/sanswitch/search', 'SanswitchController@index');
 
-Route::post('/physical/store', [PhysicalController::class, 'store'])->name('physical.store');
+Route::resource('/database', DatabaseController::class);
+Route::get('/database/search', 'DatabaseController@index');
+
+// Route::get('/dashboard', function(){
+//     return view('dashboard.index');
+// });

@@ -6,54 +6,54 @@
     <div class="d-flex align-items-center justify-content-between mt-5 mb-5">
         <a href="{{ route('welcome') }}">
             <img src="{{ asset('images/logo1.png') }}" alt="" height="25">
-            <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
+            <a href="javascript:history.go(-1);" class="btn btn-dark">Kembali</a>
         </a>
     </div>
-    <div>
-        <h3 class="mb-0">C/S PHYSICAL SERVER</h3>
+    <div class="mb-3">
+        <h4>C/S PHYSICAL SERVER</h4>
     </div>
     <hr>
     <form action="{{ route('physical.store') }}" method="POST">
         @csrf
         <table class="table table-striped table-bordered">
-            <thead class="table-primary">
+            <thead class="table-primary text-center">
               <tr>
                 <th scope="col" style="width: 4% ;" class="text-center">No</th>
                 <th scope="col">Task List</th>
-                <th scope="col">OK (Green)</th>
-                <th scope="col">Not Good (Orange)</th>
+                <th width="30%" scope="col">OK</th>
+                <th width="30%" scope="col">Not Good</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row" class="text-center">1</th>
                 <td>Host 3</td>
-                <td>
+                <td class="text-center">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="host3" id="host3ok" value="OK" required>
-                        <label class="form-check-label" for="host3ok"></label>
+                        <label class="form-check-label" for="host3ok">OK</label>
                     </div>
                 </td>
-                <td>
+                <td class="text-center">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="host3" id="host3ng" value="NG" required>
-                        <label class="form-check-label" for="host3ng"></label>
+                        <label class="form-check-label" for="host3ng">NG</label>
                     </div>
                 </td>
               </tr>
               <tr>
                 <th scope="row" class="text-center">2</th>
                 <td>Storage 3</td>
-                <td>
+                <td class="text-center">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="storage3" id="storage3ok" value="OK" required>
-                        <label class="form-check-label" for="storage3ok"></label>
+                        <label class="form-check-label" for="storage3ok">OK</label>
                     </div>
                 </td>
-                <td>
+                <td class="text-center">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="storage3" id="storage3ng" value="NG" required>
-                        <label class="form-check-label" for="storage3ng"></label>
+                        <label class="form-check-label" for="storage3ng">NG</label>
                     </div>
                 </td>
               </tr>
@@ -61,16 +61,16 @@
                     <tr>
                         <th scope="row" class="text-center"><?php echo $i + 2; ?></th>
                         <td>HDD<?php echo $i; ?>-Str3</td>
-                        <td>
+                        <td class="text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="hdd<?php echo $i; ?>" id="hdd<?php echo $i; ?>ok" value="OK" required>
-                                <label class="form-check-label" for="hdd<?php echo $i; ?>ok"></label>
+                                <label class="form-check-label" for="hdd<?php echo $i; ?>ok">OK</label>
                             </div>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="hdd<?php echo $i; ?>" id="hdd<?php echo $i; ?>ng" value="NG" required>
-                                <label class="form-check-label" for="hdd<?php echo $i; ?>ng"></label>
+                                <label class="form-check-label" for="hdd<?php echo $i; ?>ng">NG</label>
                             </div>
                         </td>
                     </tr>
@@ -79,32 +79,32 @@
                 <tr>
                     <th scope="row" class="text-center">22</th>
                     <td>Host 4</td>
-                    <td>
+                    <td class="text-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="host4" id="host4ok" value="OK" required>
-                            <label class="form-check-label" for="host4ok"></label>
+                            <label class="form-check-label" for="host4ok">OK</label>
                         </div>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="host4" id="host4ng" value="NG" required>
-                            <label class="form-check-label" for="host4ng"></label>
+                            <label class="form-check-label" for="host4ng">NG</label>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <th scope="row" class="text-center">23</th>
                     <td>Storage 4</td>
-                    <td>
+                    <td class="text-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="storage4" id="storage4ok" value="OK" required>
-                            <label class="form-check-label" for="storage4ok"></label>
+                            <label class="form-check-label" for="storage4ok">OK</label>
                         </div>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="storage4" id="storage4ng" value="NG" required>
-                            <label class="form-check-label" for="storage4ng"></label>
+                            <label class="form-check-label" for="storage4ng">NG</label>
                         </div>
                     </td>
                 </tr>
@@ -112,16 +112,16 @@
                 <tr>
                     <th scope="row" class="text-center"><?php echo $i + 23; ?></th>
                     <td>HDD<?php echo $i; ?>-Str4</td>
-                    <td>
+                    <td class="text-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="hdd_<?php echo $i + 19; ?>" id="hdd_<?php echo $i + 19; ?>ok" value="OK" required>
-                            <label class="form-check-label" for="hdd_<?php echo $i + 19; ?>ok"></label>
+                            <label class="form-check-label" for="hdd_<?php echo $i + 19; ?>ok">OK</label>
                         </div>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="hdd_<?php echo $i + 19; ?>" id="hdd_<?php echo $i + 19; ?>ng" value="NG" required>
-                            <label class="form-check-label" for="hdd_<?php echo $i + 19; ?>ng"></label>
+                            <label class="form-check-label" for="hdd_<?php echo $i + 19; ?>ng">NG</label>
                         </div>
                     </td>
                 </tr>

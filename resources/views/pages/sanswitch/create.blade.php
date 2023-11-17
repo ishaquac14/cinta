@@ -8,8 +8,8 @@
             <a href="javascript:history.go(-1);" class="btn btn-primary">Kembali</a>
         </a>
     </div>
-    <div>
-        <h3 class="mb-0">C/S SAN SWITCH</h3>
+    <div class="mb-3">
+        <h4>C/S SAN SWITCH</h4>
     </div>
     <hr>
 

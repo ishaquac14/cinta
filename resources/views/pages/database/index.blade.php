@@ -8,14 +8,14 @@
             </a>
             
             <div class="d-flex align-items-center">
-                <a href="javascript:history.go(-1);" class="btn btn-dark">Kembali</a>
-                <a href="{{ route('physical.create') }}" class="btn btn-primary" style="margin-left: 10px;">Create Checksheet</a>
+                <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('database.create') }}" class="btn btn-primary" style="margin-left: 10px;">Create Checksheet</a>
             </div>
         </div>
         <div class="col-md-3 offset-md-9 mb-3">
-            <form action="/physical" class="d-flex ml-auto mt-2" method="GET">
+            <form action="/database" class="d-flex ml-auto mt-2" method="GET">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
+                <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
         </div>
     @if(Session::has('success'))
@@ -35,16 +35,16 @@
                 </tr>
             </thead>
             <tbody>
-                @if($physicals->count() > 0)
-                @foreach ($physicals as $physical)
+                @if($databases->count() > 0)
+                @foreach ($databases as $database)
                     <tr class="table-light"> 
                         <td class="align-middle text-center">{{ $loop->iteration }}</td>
-                        <td class="align-middle text-center">{{ \Carbon\Carbon::parse($physical->created_at)->format('d-m-Y') }}</td>
-                        <td class="align-middle">{{ $physical->author }}</td>
-                        <td class="align-middle">{{ $physical->note }}</td>
+                        <td class="align-middle text-center">{{ \Carbon\Carbon::parse($database->created_at)->format('d-m-Y') }}</td>
+                        <td class="align-middle">{{ $database->author }}</td>
+                        <td class="align-middle">{{ $database->note }}</td>
                         <td class="align-middle text-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('physical.show', $physical->id) }}" class="btn btn-primary">Detail</a>
+                                <a href="{{ route('database.show', $database->id) }}" class="btn btn-primary">Detail</a>
                             </div>
                         </td>
                     </tr>
@@ -56,7 +56,7 @@
                 @endif
             </tbody>
         </table>
-        {{-- @include('layouts.pagination-physical', ['physicals' => $physicals]) --}}
+        {{-- @include('layouts.pagination-database', ['databases' => $databases]) --}}
     </div>
 </div>
 @endsection
